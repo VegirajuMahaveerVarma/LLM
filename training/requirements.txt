@@ -1,0 +1,9 @@
+# Install these separately from the API runtime.
+torch
+transformers>=4.45
+datasets>=2.20
+peft>=0.12
+trl>=0.10
+accelerate>=0.34
+bitsandbytes>=0.43
+sentencepiece
