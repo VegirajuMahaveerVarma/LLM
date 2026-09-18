@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "purpose": "Canonical coverage manifest for the ENGI-MIND engineering tutor.",
+  "domains": {
+    "engineering_mathematics": ["calculus","linear_algebra","differential_equations","probability_statistics","numerical_methods","complex_variables","transforms"],
+    "cse_it": ["programming","data_structures","algorithms","dbms","operating_systems","computer_networks","computer_architecture","software_engineering","web_technologies","distributed_systems","cloud_computing","cybersecurity","artificial_intelligence","machine_learning","deep_learning","computer_vision","nlp"],
+    "ece": ["digital_electronics","analog_electronics","microprocessors","microcontrollers","signals_systems","digital_signal_processing","communication_systems","vlsi","embedded_systems"],
+    "eee": ["circuit_theory","electrical_machines","power_systems","power_electronics","control_systems","measurements","renewable_energy"],
+    "mechanical": ["engineering_mechanics","strength_of_materials","thermodynamics","fluid_mechanics","heat_transfer","manufacturing","machine_design","cad_cam","automobile_engineering"],
+    "civil": ["engineering_mechanics","structural_analysis","concrete","steel_structures","geotechnical","surveying","transportation","hydraulics","environmental_engineering","construction_management"],
+    "chemical": ["material_balances","thermodynamics","fluid_flow","heat_transfer","mass_transfer","reaction_engineering","process_control"],
+    "robotics_automation": ["robotics","kinematics","dynamics","control","sensors","actuators","plc","industrial_automation","embedded_systems","computer_vision"],
+    "cross_discipline": ["engineering_drawing","technical_communication","engineering_economics","project_management","research_methods","professional_ethics"]
+  },
+  "behaviors": ["explain","derive","solve","worked_example","misconception_correction","practice","exam","project","career"]
+}
