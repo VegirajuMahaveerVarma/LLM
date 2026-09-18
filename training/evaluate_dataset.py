@@ -1,13 +1,24 @@
-import json,sys
+"""Validate prepared ENGI-MIND chat-format JSONL."""
+import argparse,json
 from collections import Counter
-def validate(path):
-    rows=[json.loads(x) for x in open(path,encoding='utf-8') if x.strip()]
-    if not rows: raise ValueError('dataset is empty')
-    for i,r in enumerate(rows,1):
-        m=r.get('messages',[])
-        if len(m)!=3 or [x.get('role') for x in m]!=['system','user','assistant']: raise ValueError(f'row {i}: invalid message format')
-        if not m[1]['content'].strip() or not m[2]['content'].strip(): raise ValueError(f'row {i}: empty content')
-    print('examples=',len(rows)); print('branches=',dict(Counter(r['metadata']['branch'] for r in rows)))
-if __name__=='__main__':
-    if len(sys.argv)!=2: raise SystemExit('usage: python training/evaluate_dataset.py dataset.jsonl')
-    validate(sys.argv[1])
+from pathlib import Path
+
+def main():
+    p=argparse.ArgumentParser(); p.add_argument("dataset",type=Path); args=p.parse_args()
+    total=0; branches=Counter()
+    with args.dataset.open("r",encoding="utf-8") as f:
+        for line_no,line in enumerate(f,1):
+            if not line.strip(): continue
+            item=json.loads(line); messages=item.get("messages",[])
+            if [m.get("role") for m in messages] != ["system","user","assistant"]:
+                raise ValueError(f"{args.dataset}:{line_no}: expected system/user/assistant")
+            if any(not str(m.get("content","")).strip() for m in messages):
+                raise ValueError(f"{args.dataset}:{line_no}: empty message")
+            assistant=messages[2]["content"]
+            if "[REVIEW_REQUIRED]" in assistant:
+                raise ValueError(f"{args.dataset}:{line_no}: contains REVIEW_REQUIRED content")
+            branches[item.get("metadata",{}).get("branch","unknown")]+=1; total+=1
+    if not total: raise ValueError("dataset is empty")
+    print("Examples:",total); print("Branches:",dict(branches)); print("Validation: PASS")
+
+if __name__=="__main__": main()
