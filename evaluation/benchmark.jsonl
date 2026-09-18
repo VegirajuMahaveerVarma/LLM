@@ -1,0 +1,8 @@
+{"id":"math-001","branch":"Engineering Mathematics","skill":"calculus","prompt":"Explain why the derivative of sin(x) is cos(x), including the limit definition."}
+{"id":"net-001","branch":"CSE","skill":"computer_networks","prompt":"Compare TCP and UDP and give one application scenario for each."}
+{"id":"control-001","branch":"Robotics","skill":"control","prompt":"Explain closed-loop control using a robot joint position example. State what the error signal represents."}
+{"id":"mech-001","branch":"Mechanical","skill":"thermodynamics","prompt":"Explain the first law of thermodynamics for a closed system and define the sign convention for heat and work."}
+{"id":"civil-001","branch":"Civil","skill":"structural_analysis","prompt":"Explain the difference between dead load and live load with examples."}
+{"id":"eee-001","branch":"EEE","skill":"power_systems","prompt":"Explain why electrical power is transmitted at high voltage."}
+{"id":"ece-001","branch":"ECE","skill":"digital_electronics","prompt":"Explain the difference between combinational and sequential logic with examples."}
+{"id":"chemical-001","branch":"Chemical","skill":"reaction_engineering","prompt":"Explain what reaction rate means and list factors that can affect it."}
