@@ -1,0 +1,27 @@
+# Starter QLoRA/SFT configuration. Adapt to the selected open-weight model.
+model:
+  base_model: "REPLACE_WITH_APPROVED_OPEN_WEIGHT_MODEL"
+  max_seq_length: 2048
+  load_in_4bit: true
+dataset:
+  train: "training/processed/train.jsonl"
+  validation: "training/processed/validation.jsonl"
+lora:
+  enabled: true
+  rank: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj,k_proj,v_proj,o_proj]
+training:
+  epochs: 2
+  learning_rate: 0.0002
+  per_device_batch_size: 1
+  gradient_accumulation_steps: 16
+  warmup_ratio: 0.03
+  logging_steps: 10
+  evaluation_strategy: steps
+  save_strategy: steps
+notes:
+  - "Never train on records containing [REVIEW_REQUIRED]."
+  - "Run the held-out engineering benchmark before claiming domain adaptation."
+  - "For a 6 GB GPU, prefer a small quantized model or remote GPU compute."
